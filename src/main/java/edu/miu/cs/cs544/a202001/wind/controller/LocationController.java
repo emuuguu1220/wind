@@ -2,19 +2,24 @@ package edu.miu.cs.cs544.a202001.wind.controller;
 import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/locations")
 public class LocationController {
 
     private ILocationService locationService;
 
-    @GetMapping(value = "/locationss")
+    @GetMapping(value = "/")
     public List<Location> getAllLocations() {
         return locationService.getAllLocations();
+    }
+
+    @PostMapping(value = "/add")
+    public void addLocation(@RequestBody Location location) {
+        locationService.addLocation(location);
     }
 
     public LocationController() {

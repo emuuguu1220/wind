@@ -29,8 +29,8 @@ public class LocationServiceImpl implements ILocationService {
     }
 
     @Override
-    public Location addLocation(Location location) {
-        return null;
+    public void addLocation(Location location) {
+        locationRepository.save(location);
     }
 
     @Override
