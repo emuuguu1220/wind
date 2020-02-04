@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
+import edu.miu.cs.cs544.a202001.wind.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,30 +20,23 @@ import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
 import edu.miu.cs.cs544.a202001.wind.domain.User;
-import edu.miu.cs.cs544.a202001.wind.repository.AttendanceRepo;
-import edu.miu.cs.cs544.a202001.wind.repository.CourseOfferRepo;
-import edu.miu.cs.cs544.a202001.wind.repository.CourseRepository;
-import edu.miu.cs.cs544.a202001.wind.repository.LocationRepository;
-import edu.miu.cs.cs544.a202001.wind.repository.SessionRepo;
-import edu.miu.cs.cs544.a202001.wind.repository.TimeSlotRepository;
-import edu.miu.cs.cs544.a202001.wind.repository.UserRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 	@Autowired
-	CourseRepository courseRepository;
+	ICourseRepository courseRepository;
 	@Autowired
-	LocationRepository locationRepository;
+	ILocationRepository locationRepository;
 	@Autowired
-	UserRepository userRepository;
+	IUserRepository userRepository;
 	@Autowired
-	TimeSlotRepository tsRepository;
+	ITimeSlotRepository tsRepository;
 	@Autowired
-	AttendanceRepo atRepository;
+	IAttendanceRepo atRepository;
 	@Autowired
-	CourseOfferRepo coRepo;
+	ICourseOfferRepo coRepo;
 	@Autowired 
-	SessionRepo sessionRepo;
+	ISessionRepo sessionRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
