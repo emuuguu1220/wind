@@ -2,11 +2,14 @@ package edu.miu.cs.cs544.a202001.wind.service;
 
 import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.repository.ILocationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class LocationServiceImpl implements ILocationService {
+
 
     private ILocationRepository locationRepository;
 
@@ -20,7 +23,7 @@ public class LocationServiceImpl implements ILocationService {
     public ILocationRepository getLocationRepository() {
         return locationRepository;
     }
-
+    @Autowired
     public void setLocationRepository(ILocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
@@ -37,12 +40,7 @@ public class LocationServiceImpl implements ILocationService {
 
     @Override
     public List<Location> getAllLocations() {
-        System.out.println("############################################");
-        List<Location> locations = locationRepository.findAll();
-        locations.forEach(location -> {
-            System.out.println(location);
-        });
-        return locations;
+        return locationRepository.findAll();
     }
 
     @Override

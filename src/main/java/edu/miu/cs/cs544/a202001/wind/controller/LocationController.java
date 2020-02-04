@@ -9,13 +9,12 @@ import java.util.List;
 
 @RestController
 public class LocationController {
-    @Autowired
+
     private ILocationService locationService;
 
     @GetMapping(value = "/")
     public List<Location> getAllLocations() {
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        return   locationService.getAllLocations();
+        return locationService.getAllLocations();
     }
 
     public LocationController() {
@@ -24,7 +23,7 @@ public class LocationController {
     public ILocationService getLocationService() {
         return locationService;
     }
-
+    @Autowired
     public void setLocationService(ILocationService locationService) {
         this.locationService = locationService;
     }
