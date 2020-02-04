@@ -12,7 +12,7 @@ public class LocationController {
 
     private ILocationService locationService;
 
-    @GetMapping(value = "/locations")
+    @GetMapping(value = "/locationss")
     public List<Location> getAllLocations() {
         return locationService.getAllLocations();
     }
