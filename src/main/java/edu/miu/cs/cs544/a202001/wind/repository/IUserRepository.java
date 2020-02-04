@@ -7,6 +7,6 @@ import edu.miu.cs.cs544.a202001.wind.domain.User;
  
  
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface IUserRepository extends JpaRepository<User, Long> {
 	
 }

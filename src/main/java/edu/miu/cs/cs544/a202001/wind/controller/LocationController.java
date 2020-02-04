@@ -18,7 +18,7 @@ public class LocationController {
     }
 
     @GetMapping(value = "/{id}")
-    public Location getLocation(@PathVariable int id) {
+    public Location getLocation(@PathVariable Long id) {
         return locationService.getLocationById(id);
     }
 
