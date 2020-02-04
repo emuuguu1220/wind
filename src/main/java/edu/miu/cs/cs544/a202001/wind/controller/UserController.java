@@ -30,12 +30,12 @@ public class UserController {
         userService.addUser(user);
     }
 
-    @PostMapping(value = "/update")
+    @PutMapping(value = "/update")
     public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
 
-    @PostMapping(value = "/delete")
+    @DeleteMapping(value = "/delete")
     public void deleteUser(@RequestBody User user) {
         userService.deleteUser(user);
     }
