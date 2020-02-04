@@ -2,6 +2,7 @@ package edu.miu.cs.cs544.a202001.wind;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,7 @@ import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
+import edu.miu.cs.cs544.a202001.wind.domain.User;
 import edu.miu.cs.cs544.a202001.wind.repository.AttendanceRepo;
 import edu.miu.cs.cs544.a202001.wind.repository.CourseOfferRepo;
 import edu.miu.cs.cs544.a202001.wind.repository.CourseRepository;
@@ -88,6 +90,6 @@ public class Application implements CommandLineRunner {
 		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
 		coRepo.save(co);
 		
-		
+//		Student user = (Student) userRepository.findById((long) 1).orElse(null);
     }
 }
