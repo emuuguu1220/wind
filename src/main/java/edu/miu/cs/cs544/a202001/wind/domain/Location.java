@@ -1,7 +1,14 @@
 package edu.miu.cs.cs544.a202001.wind.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "locations")
 public class Location {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String locationId;
     private String building;
     private int capacity;
