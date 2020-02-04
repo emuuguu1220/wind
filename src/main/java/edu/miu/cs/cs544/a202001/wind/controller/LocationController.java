@@ -17,10 +17,27 @@ public class LocationController {
         return locationService.getAllLocations();
     }
 
+    @GetMapping(value = "/{id}")
+    public Location getLocation(@PathVariable int id) {
+        return locationService.getLocationById(id);
+    }
+
+
     @PostMapping(value = "/add")
     public void addLocation(@RequestBody Location location) {
         locationService.addLocation(location);
     }
+
+    @PostMapping(value = "/update")
+    public void updateLocation(@RequestBody Location location) {
+        locationService.updateLocation(location);
+    }
+
+    @PostMapping(value = "/delete")
+    public void deleteLocation(@RequestBody Location location) {
+        locationService.deleteLocation(location);
+    }
+
 
     public LocationController() {
     }

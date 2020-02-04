@@ -16,6 +16,9 @@ public class Location {
     private String room;
     private String description;
 
+    public Location() {
+    }
+
     public Location(String locationId, String building, int capacity, String name, String room, String description) {
         this.locationId = locationId;
         this.building = building;

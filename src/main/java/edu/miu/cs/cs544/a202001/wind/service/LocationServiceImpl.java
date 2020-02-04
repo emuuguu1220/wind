@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class LocationServiceImpl implements ILocationService {
 
-
     private ILocationRepository locationRepository;
 
     public LocationServiceImpl(ILocationRepository locationRepository) {
@@ -20,9 +19,6 @@ public class LocationServiceImpl implements ILocationService {
     public LocationServiceImpl() {
     }
 
-    public ILocationRepository getLocationRepository() {
-        return locationRepository;
-    }
     @Autowired
     public void setLocationRepository(ILocationRepository locationRepository) {
         this.locationRepository = locationRepository;
@@ -34,8 +30,8 @@ public class LocationServiceImpl implements ILocationService {
     }
 
     @Override
-    public Location getLocationById(int locationId) {
-        return null;
+    public Location getLocationById(int id) {
+        return locationRepository.findById(id).get();
     }
 
     @Override
@@ -44,12 +40,12 @@ public class LocationServiceImpl implements ILocationService {
     }
 
     @Override
-    public Location updateLocation(Location location) {
-        return null;
+    public void updateLocation(Location location) {
+        locationRepository.save(location);
     }
 
     @Override
-    public int deleteLocationById(int locationId) {
-        return 0;
+    public void deleteLocation(Location location) {
+        locationRepository.delete(location);
     }
 }
