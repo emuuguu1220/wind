@@ -28,12 +28,12 @@ public class CourseController {
         courseService.addCourse(course);
     }
 
-    @PostMapping(value = "/update")
+    @PutMapping(value = "/update")
     public void updateCourse(@RequestBody Course course) {
         courseService.updateCourse(course);
     }
 
-    @PostMapping(value = "/delete")
+    @DeleteMapping(value = "/delete")
     public void deleteCourse(@RequestBody Course course) {
         courseService.deleteCourse(course);
     }

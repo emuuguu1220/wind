@@ -28,12 +28,12 @@ public class LocationController {
         locationService.addLocation(location);
     }
 
-    @PostMapping(value = "/update")
+    @PutMapping(value = "/update")
     public void updateLocation(@RequestBody Location location) {
         locationService.updateLocation(location);
     }
 
-    @PostMapping(value = "/delete")
+    @DeleteMapping(value = "/delete")
     public void deleteLocation(@RequestBody Location location) {
         locationService.deleteLocation(location);
     }
