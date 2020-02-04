@@ -2,8 +2,8 @@ package edu.miu.cs.cs544.a202001.wind;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
-import edu.miu.cs.cs544.a202001.wind.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,23 +18,31 @@ import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
+import edu.miu.cs.cs544.a202001.wind.domain.User;
+import edu.miu.cs.cs544.a202001.wind.repository.AttendanceRepo;
+import edu.miu.cs.cs544.a202001.wind.repository.CourseOfferRepo;
+import edu.miu.cs.cs544.a202001.wind.repository.CourseRepository;
+import edu.miu.cs.cs544.a202001.wind.repository.LocationRepository;
+import edu.miu.cs.cs544.a202001.wind.repository.SessionRepo;
+import edu.miu.cs.cs544.a202001.wind.repository.TimeSlotRepository;
+import edu.miu.cs.cs544.a202001.wind.repository.UserRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 	@Autowired
-	ICourseRepository courseRepository;
+	CourseRepository courseRepository;
 	@Autowired
-	ILocationRepository locationRepository;
+	LocationRepository locationRepository;
 	@Autowired
-	IUserRepository userRepository;
+	UserRepository userRepository;
 	@Autowired
-	ITimeSlotRepository tsRepository;
+	TimeSlotRepository tsRepository;
 	@Autowired
-	IAttendanceRepo atRepository;
+	AttendanceRepo atRepository;
 	@Autowired
-	ICourseOfferRepo coRepo;
+	CourseOfferRepo coRepo;
 	@Autowired 
-	ISessionRepo sessionRepo;
+	SessionRepo sessionRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -82,6 +90,6 @@ public class Application implements CommandLineRunner {
 		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
 		coRepo.save(co);
 		
-		
+//		Student user = (Student) userRepository.findById((long) 1).orElse(null);
     }
 }

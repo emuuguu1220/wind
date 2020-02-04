@@ -34,12 +34,16 @@ public class Attendance {
 	@JoinColumn(name="LOCATION_ID",nullable=false)
 	private Location location;
 	
+	private String barcode_id;
+	
 	public Attendance() {}
 	public Attendance(Date date, Student student, TimeSlot timeSlot, Location location) {
 		this.student = student;
 		this.timeSlot = timeSlot;
 		this.date = date;
 		this.location = location;
+		this.barcode_id = student.getBarcode();
+		this.student.addAttendance(this);
 	}
 
 	public int getId() {
@@ -78,6 +82,12 @@ public class Attendance {
 	}
 	public void setTimeSlot(TimeSlot timeSlot) {
 		this.timeSlot = timeSlot;
+	}
+	public String getBarcode_id() {
+		return barcode_id;
+	}
+	public void setBarcode_id(String barcode_id) {
+		this.barcode_id = barcode_id;
 	}
 	
 }
