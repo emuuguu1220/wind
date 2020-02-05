@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class Attendance {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Temporal(TemporalType.DATE)
 	private Date date;
@@ -46,11 +46,11 @@ public class Attendance {
 		this.student.addAttendance(this);
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
