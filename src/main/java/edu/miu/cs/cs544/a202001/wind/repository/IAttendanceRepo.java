@@ -7,6 +7,6 @@ import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
 
  
 @Repository
-public interface IAttendanceRepo extends JpaRepository<Attendance, Integer> {
+public interface IAttendanceRepo extends JpaRepository<Attendance, Long> {
 	
 }
