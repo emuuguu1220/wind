@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface IAttendanceRepository extends JpaRepository<Attendance, Long> {
-    @Query("select a from Attendance a where a.barcode_id =?1")
-    List<Attendance> findByBarcode(String barCode);
+//    @Query("select distinct a from Attendance a join Student st join CourseOffering co join Session se join TimeSlot t where a.barcode_id =?1")
+//    List<Attendance> findByBarcode(String barCode);
 }
