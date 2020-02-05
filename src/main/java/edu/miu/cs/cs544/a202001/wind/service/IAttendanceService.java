@@ -10,4 +10,5 @@ public interface IAttendanceService {
     public abstract List<Attendance> getAllAttendances();
     public abstract void updateAttendance(Attendance attendance);
     public abstract void deleteAttendance(Attendance attendance);
+    List<Attendance> getAllAttendancesForStudent(String barCode);
 }

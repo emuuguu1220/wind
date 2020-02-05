@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.a202001.wind.controller;
 import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
+import edu.miu.cs.cs544.a202001.wind.domain.User;
 import edu.miu.cs.cs544.a202001.wind.service.IAttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,10 @@ public class AttendanceController {
 
     private IAttendanceService attendanceService;
 
+    @GetMapping(value = "?barCode={barCode}")
+    public  List<Attendance> getUserAttendances(@PathVariable String barCode) {
+        return attendanceService.getAllAttendancesForStudent(barCode);
+    }
     @GetMapping(value = "/")
     public List<Attendance> getAllAttendances() {
         return attendanceService.getAllAttendances();
