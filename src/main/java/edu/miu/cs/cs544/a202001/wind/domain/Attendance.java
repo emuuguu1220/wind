@@ -1,5 +1,7 @@
 package edu.miu.cs.cs544.a202001.wind.domain;
 
+import lombok.Data;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+
 @Table(name="ATTENDANCE")
 public class Attendance {
 	@Id
@@ -35,12 +38,14 @@ public class Attendance {
 	private Location location;
 	
 	private String barcode_id;
-	
-	public Attendance() {}
+
+	public Attendance() {
+	}
+
 	public Attendance(Date date, Student student, TimeSlot timeSlot, Location location) {
+		this.date = date;
 		this.student = student;
 		this.timeSlot = timeSlot;
-		this.date = date;
 		this.location = location;
 		this.barcode_id = student.getBarcode();
 		this.student.addAttendance(this);
@@ -70,6 +75,14 @@ public class Attendance {
 		this.student = student;
 	}
 
+	public TimeSlot getTimeSlot() {
+		return timeSlot;
+	}
+
+	public void setTimeSlot(TimeSlot timeSlot) {
+		this.timeSlot = timeSlot;
+	}
+
 	public Location getLocation() {
 		return location;
 	}
@@ -77,17 +90,12 @@ public class Attendance {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	public TimeSlot getTimeSlot() {
-		return timeSlot;
-	}
-	public void setTimeSlot(TimeSlot timeSlot) {
-		this.timeSlot = timeSlot;
-	}
+
 	public String getBarcode_id() {
 		return barcode_id;
 	}
+
 	public void setBarcode_id(String barcode_id) {
 		this.barcode_id = barcode_id;
 	}
-	
 }

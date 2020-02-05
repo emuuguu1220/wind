@@ -2,9 +2,9 @@ package edu.miu.cs.cs544.a202001.wind;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Optional;
 
 import edu.miu.cs.cs544.a202001.wind.repository.*;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +19,6 @@ import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
-import edu.miu.cs.cs544.a202001.wind.domain.User;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -32,11 +31,11 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	ITimeSlotRepository tsRepository;
 	@Autowired
-	IAttendanceRepo atRepository;
+	IAttendanceRepository atRepository;
 	@Autowired
-	ICourseOfferRepo coRepo;
-	@Autowired 
-	ISessionRepo sessionRepo;
+	ICourseOfferRepository coRepo;
+	@Autowired
+	ISessionRepository sessionRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
