@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.NaturalId;
@@ -24,11 +27,24 @@ public class Student extends User{
 	@OneToMany(mappedBy="student",fetch=FetchType.EAGER)
 	private List<Attendance> attendances = new ArrayList<Attendance>();
 	
+	@ManyToMany
+	@JoinTable(name= "Student_CourseOffer",
+	   joinColumns = {@JoinColumn(name="STUDENT_ID")},
+	   inverseJoinColumns = {@JoinColumn(name="COURSE_OFFERING_ID")}
+	)
+	private List<CourseOffering> courseOfferings = new ArrayList<CourseOffering>();
+	
 	public Student() {}
 	public Student(String userName,String password, String firstName, String lastName, String email, String studentId, String barcode) {
 		super(userName,password,firstName,lastName,email);
 		this.studentId = studentId;
 		this.barcode = barcode;
+	}
+	public void addCourseOffering(CourseOffering co) {
+		this.courseOfferings.add(co);
+	}
+	public void removeCourseOffering(CourseOffering co) {
+		this.courseOfferings.remove(co);
 	}
 	public void addAttendance(Attendance attendance) {
 		attendances.add(attendance);
@@ -54,5 +70,10 @@ public class Student extends User{
 	public void setAttendances(List<Attendance> attendances) {
 		this.attendances = attendances;
 	}
-	
+	public List<CourseOffering> getCourseOfferings() {
+		return courseOfferings;
+	}
+	public void setCourseOfferings(List<CourseOffering> courseOfferings) {
+		this.courseOfferings = courseOfferings;
+	}
 }

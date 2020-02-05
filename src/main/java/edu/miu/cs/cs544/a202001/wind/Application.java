@@ -83,6 +83,9 @@ public class Application implements CommandLineRunner {
 		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
 		coRepo.save(co);
 		
+		/*Student signing for course*/
+		student.addCourseOffering(co);
+		userRepository.save(student);
 //		Student user = (Student) userRepository.findById((long) 1).orElse(null);
     }
 }

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -40,11 +41,20 @@ public class CourseOffering {
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="courseOffering",fetch=FetchType.EAGER)
 	private List<Session> sessions = new ArrayList<Session>();
 	
+	@ManyToMany(mappedBy="courseOfferings")
+	List<Student> students = new ArrayList<Student>();
+	
 	public CourseOffering() {}
 	public CourseOffering(Date startDate, Date endDate, Course course) {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.course = course;
+	}
+	public void addStudent(Student student) {
+		this.students.add(student);
+	}
+	public void removeStudent(Student student) {
+		this.students.remove(student);
 	}
 	public void addSession(Session session) {
 		sessions.add(session);
