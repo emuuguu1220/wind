@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.a202001.wind.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.Date;
@@ -27,6 +28,7 @@ public class Attendance {
 	
     @ManyToOne
     @JoinColumn(name="STUDENT_ID",nullable=false)
+	@JsonIgnore
 	private Student student;
     
     @ManyToOne

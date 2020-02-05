@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import edu.miu.cs.cs544.a202001.wind.repository.*;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,7 +32,7 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	IAttendanceRepository atRepository;
 	@Autowired
-	ICourseOfferRepository coRepo;
+	ICourseOfferingRepository coRepo;
 	@Autowired
 	ISessionRepository sessionRepo;
 	

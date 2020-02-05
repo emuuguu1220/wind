@@ -7,6 +7,6 @@ import edu.miu.cs.cs544.a202001.wind.domain.CourseOffering;
 
  
 @Repository
-public interface ICourseOfferRepository extends JpaRepository<CourseOffering, Long> {
+public interface ICourseOfferingRepository extends JpaRepository<CourseOffering, Long> {
 	
 }
