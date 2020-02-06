@@ -44,22 +44,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-	    http.csrf().disable() 
+	    http.csrf().disable()
 	            	.authorizeRequests()
-	                .antMatchers("/resources/**", "/login", "/permitswagger").permitAll() 
+	                .antMatchers("/resources/**", "/login", "/permitswagger").permitAll()
 	                .antMatchers("/v2/api-docs",
                             "/configuration/ui",
                             "/swagger-resources/**",
                             "/configuration/security",
                             "/swagger-ui.html",
                             "/webjars/**").permitAll()
-	                .antMatchers("/courses/").hasAnyRole("ADMIN","FACULTY")	
+	                .antMatchers("/courses/").hasAnyRole("ADMIN","FACULTY")
 	                .antMatchers("/courses/**").hasRole("ADMIN")
-	                .antMatchers("/session/").hasAnyRole("ADMIN","FACULTY")	
+	                .antMatchers("/session/").hasAnyRole("ADMIN","FACULTY")
 	                .antMatchers("/session/**").hasRole("ADMIN")
-	                .antMatchers("/location/").hasAnyRole("ADMIN","FACULTY")	
+	                .antMatchers("/location/").hasAnyRole("ADMIN","FACULTY")
 	                .antMatchers("/location/**").hasRole("ADMIN")
-	                .antMatchers("/timeSlot/").hasAnyRole("ADMIN","FACULTY")	
+	                .antMatchers("/timeSlot/").hasAnyRole("ADMIN","FACULTY")
 	                .antMatchers("/timeslot/**").hasRole("ADMIN")
 	                .anyRequest().authenticated()
 	                .and()

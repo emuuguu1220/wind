@@ -22,23 +22,6 @@ public class TimeSlotController {
         return timeSlotService.getTimeSlotById(id);
     }
 
-
-    @PostMapping(value = "/add")
-    public void addTimeSlot(@RequestBody TimeSlot timeSlot) {
-        timeSlotService.addTimeSlot(timeSlot);
-    }
-
-    @PutMapping(value = "/update")
-    public void updateTimeSlot(@RequestBody TimeSlot timeSlot) {
-        timeSlotService.updateTimeSlot(timeSlot);
-    }
-
-    @DeleteMapping(value = "/delete")
-    public void deleteTimeSlot(@RequestBody TimeSlot timeSlot) {
-        timeSlotService.deleteTimeSlot(timeSlot);
-    }
-
-
     public TimeSlotController() {
     }
 

@@ -31,11 +31,6 @@ public class SessionController {
         sessionService.addSession(session);
     }
 
-    @PutMapping(value = "/update")
-    public void updateSession(@RequestBody Session session) {
-        sessionService.updateSession(session);
-    }
-
     @DeleteMapping(value = "/delete")
     public void deleteSession(@RequestBody Session session) {
         sessionService.deleteSession(session);
