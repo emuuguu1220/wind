@@ -18,8 +18,10 @@ import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application implements CommandLineRunner {
 	@Autowired
 	ICourseRepository courseRepository;
@@ -87,4 +89,5 @@ public class Application implements CommandLineRunner {
 		userRepository.save(student);
 //		Student user = (Student) userRepository.findById((long) 1).orElse(null);
     }
+
 }
