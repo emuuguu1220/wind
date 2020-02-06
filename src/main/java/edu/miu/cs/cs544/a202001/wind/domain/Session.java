@@ -49,6 +49,7 @@ public class Session {
 	}
 	public CourseOffering getCourseOffering() {
 		return courseOffering;
+		
 	}
 	public void setCourseOffering(CourseOffering courseOffering) {
 		this.courseOffering = courseOffering;
