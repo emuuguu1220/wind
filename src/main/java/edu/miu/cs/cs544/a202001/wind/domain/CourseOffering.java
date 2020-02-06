@@ -1,6 +1,7 @@
 package edu.miu.cs.cs544.a202001.wind.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +24,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 @Entity
+@Data
 @Table(name="COURSE_OFFERING")
 public class CourseOffering {
 	@Id

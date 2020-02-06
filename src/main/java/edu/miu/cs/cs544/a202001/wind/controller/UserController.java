@@ -1,7 +1,10 @@
 package edu.miu.cs.cs544.a202001.wind.controller;
 
+import edu.miu.cs.cs544.a202001.wind.domain.CourseOffering;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.User;
+import edu.miu.cs.cs544.a202001.wind.service.ICourseOfferingService;
+import edu.miu.cs.cs544.a202001.wind.service.ICourseService;
 import edu.miu.cs.cs544.a202001.wind.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +18,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
+    @Autowired
     private IUserService userService;
-
+    @Autowired
+    private ICourseOfferingService courseOfferingService;
 
     @GetMapping(value = "/")
     public List<User> getAllUsers() {
@@ -29,10 +33,17 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @GetMapping(value = "/student/{studentId}/courseOffering/{courseOfferingId}")
+    public List<CourseOffering> addCourseOfferingToStudent(@PathVariable Long studentId, @PathVariable Long courseOfferingId) {
+        return userService.addCourseOfferingToStudent(studentId, courseOfferingService.getCourseOfferingById(courseOfferingId));
+    }
+
     @GetMapping(value = "/student/session/{sessionId}")
     public List<Object> getAttendedStudentPerSession(@PathVariable Long sessionId) {
         return userService.getAttendedStudentPerSession(sessionId);
     }
+
+
 
     @GetMapping(value = "/student/session/{sessionId}/percent")
     public Double getAttendedStudentPerSessionPerCent(Long sessionId) {
@@ -63,7 +74,6 @@ public class UserController {
         return userService;
     }
 
-    @Autowired
     public void setUserService(IUserService userService) {
         this.userService = userService;
     }
