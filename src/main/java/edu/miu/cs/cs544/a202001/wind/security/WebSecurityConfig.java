@@ -45,24 +45,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 	    http.csrf().disable()
-	            	.authorizeRequests()
-	                .antMatchers("/resources/**", "/login", "/permitswagger").permitAll()
-	                .antMatchers("/v2/api-docs",
-                            "/configuration/ui",
-                            "/swagger-resources/**",
-                            "/configuration/security",
-                            "/swagger-ui.html",
-                            "/webjars/**").permitAll()
-	                .antMatchers("/courses/").hasAnyRole("ADMIN","FACULTY")
-	                .antMatchers("/courses/**").hasRole("ADMIN")
-	                .antMatchers("/session/").hasAnyRole("ADMIN","FACULTY")
-	                .antMatchers("/session/**").hasRole("ADMIN")
-	                .antMatchers("/location/").hasAnyRole("ADMIN","FACULTY")
-	                .antMatchers("/location/**").hasRole("ADMIN")
-	                .antMatchers("/timeSlot/").hasAnyRole("ADMIN","FACULTY")
-	                .antMatchers("/timeslot/**").hasRole("ADMIN")
-	                .anyRequest().authenticated()
-	                .and()
+				.authorizeRequests()
+				.antMatchers("/resources/**", "/login", "/permitswagger").permitAll()
+				.antMatchers("/v2/api-docs",
+						"/configuration/ui",
+						"/swagger-resources/**",
+						"/configuration/security",
+						"/swagger-ui.html",
+						"/webjars/**").permitAll()
+				.antMatchers("/courses/").hasAnyRole("ADMIN","FACULTY")
+				.antMatchers("/courses/**").hasRole("ADMIN")
+				.antMatchers("/session/").hasAnyRole("ADMIN","FACULTY")
+				.antMatchers("/session/**").hasRole("ADMIN")
+				.antMatchers("/location/").hasAnyRole("ADMIN","FACULTY")
+				.antMatchers("/location/**").hasRole("ADMIN")
+				.antMatchers("/timeSlot/").hasAnyRole("ADMIN","FACULTY")
+				.antMatchers("/timeslot/**").hasRole("ADMIN")
+				.antMatchers("/courseOfferings/").hasAnyRole("ADMIN","FACULTY")
+				.antMatchers("/courseOfferings/**").hasRole("ADMIN")
+				.antMatchers("/users/student/session/**").hasAnyRole("ADMIN","FACULTY","STUDENT")
+				.antMatchers("/users/").hasRole("ADMIN")
+				.antMatchers("/users/**").hasRole("ADMIN")
+				.anyRequest().authenticated()
+				.and()
 //	            .formLogin()
 //	                .loginPage("/login")
 //	                .permitAll()
