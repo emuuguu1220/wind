@@ -5,7 +5,9 @@ import edu.miu.cs.cs544.a202001.wind.repository.IAttendanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AttendanceServiceImpl implements IAttendanceService {
@@ -50,7 +52,7 @@ public class AttendanceServiceImpl implements IAttendanceService {
     }
 
     @Override
-    public List<Attendance> getAllAttendancesForStudent(String barCode) {
+    public List<Object[]> getAllAttendancesForStudent(String barCode) {
         return attendanceRepository.findByBarcode(barCode);
     }
 }

@@ -2,7 +2,9 @@ package edu.miu.cs.cs544.a202001.wind.service;
 
 import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public interface IAttendanceService {
     public abstract void addAttendance(Attendance attendance);
@@ -10,5 +12,5 @@ public interface IAttendanceService {
     public abstract List<Attendance> getAllAttendances();
     public abstract void updateAttendance(Attendance attendance);
     public abstract void deleteAttendance(Attendance attendance);
-    List<Attendance> getAllAttendancesForStudent(String barCode);
+    List<Object[]> getAllAttendancesForStudent(String barCode);
 }
