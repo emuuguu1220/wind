@@ -14,15 +14,15 @@ public class AspectClass {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(AspectClass.class);
 
-    @Before("execution(* edu.miu.cs.cs544.a202001.wind.controller.*.*(..))")
-    public void logForAllMethodsBefore(JoinPoint joinPoint){
-        LOGGER.error("=============================================>>>>>>>>>> Before logger from "+ joinPoint.getSignature().getName());
-     //   System.out.println("=============================================>>>>>>>>>> Before logger from "+ joinPoint.getSignature().getName());
-    }
+//    @Before("execution(* edu.miu.cs.cs544.a202001.wind.controller.*.*(..))")
+//    public void logForAllMethodsBefore(JoinPoint joinPoint){
+////        LOGGER.error("=============================================>>>>>>>>>> Before logger from "+ joinPoint.getSignature().getName());
+//     //   System.out.println("=============================================>>>>>>>>>> Before logger from "+ joinPoint.getSignature().getName());
+//    }
 
-    @After(value = "execution(* edu.miu.cs.cs544.a202001.wind.controller.*.*(..))")
-    public void logForAllMethodsAfter(JoinPoint joinPoint){
-        LOGGER.info("=============================================>>>>>>>>>> After logger from "+ joinPoint.getSignature().getName());
-      //  System.out.println("=============================================>>>>>>>>>> After logger from "+ joinPoint.getSignature().getName());
-    }
+//    @After(value = "execution(* edu.miu.cs.cs544.a202001.wind.controller.*.*(..))")
+//    public void logForAllMethodsAfter(JoinPoint joinPoint){
+////        LOGGER.info("=============================================>>>>>>>>>> After logger from "+ joinPoint.getSignature().getName());
+//      //  System.out.println("=============================================>>>>>>>>>> After logger from "+ joinPoint.getSignature().getName());
+//    }
 }

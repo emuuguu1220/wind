@@ -4,6 +4,8 @@ import edu.miu.cs.cs544.a202001.wind.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -24,8 +26,9 @@ public class LocationController {
 
 
     @PostMapping(value = "/add")
-    public void addLocation(@RequestBody Location location) {
+    public void addLocation(@RequestBody Location location, HttpServletResponse response) throws IOException {
         locationService.addLocation(location);
+        response.sendRedirect("/locations/");
     }
 
     @PutMapping(value = "/update")

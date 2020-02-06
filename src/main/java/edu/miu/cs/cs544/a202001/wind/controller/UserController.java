@@ -6,6 +6,8 @@ import edu.miu.cs.cs544.a202001.wind.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -26,8 +28,9 @@ public class UserController {
 
 
     @PostMapping(value = "/add")
-    public void addUser(@RequestBody User user) {
+    public void addUser(@RequestBody User user, HttpServletResponse response) throws IOException {
         userService.addUser(user);
+        response.sendRedirect("/users/");
     }
 
     @PutMapping(value = "/update")

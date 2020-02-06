@@ -6,6 +6,8 @@ import edu.miu.cs.cs544.a202001.wind.service.IAttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +35,9 @@ public class AttendanceController {
 
 
     @PostMapping(value = "/add")
-    public void addAttendance(@RequestBody Attendance attendance) {
+    public void addAttendance(@RequestBody Attendance attendance, HttpServletResponse response) throws IOException {
         attendanceService.addAttendance(attendance);
+        response.sendRedirect("/attendances/");
     }
     @GetMapping(value = "/record")
     public Map<String, Object> recordAttendance(@RequestParam String barcode,@RequestParam long locationId) {
