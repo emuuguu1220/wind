@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 @Entity
 @Table(name="COURSE_OFFERING")
@@ -35,6 +36,7 @@ public class CourseOffering {
 	private Date endDate; 
 	
 	@ManyToOne
+	@Valid
 	@JoinColumn(name="course_id",nullable=false)
 	private Course course;
 	
@@ -51,10 +53,12 @@ public class CourseOffering {
 		this.course = course;
 	}
 	public void addStudent(Student student) {
-		this.students.add(student);
+		students.add(student);
+//		student.addCourseOffering(this);
 	}
 	public void removeStudent(Student student) {
-		this.students.remove(student);
+		students.remove(student);
+//		student.removeCourseOffering(this);
 	}
 	public void addSession(Session session) {
 		sessions.add(session);
@@ -88,5 +92,12 @@ public class CourseOffering {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	
+
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
 }

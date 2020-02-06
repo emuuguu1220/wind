@@ -80,8 +80,8 @@ public class Application implements CommandLineRunner {
 		Date endDate = dateFormat.parse("07/02/2020");
 		/*Relation tables*/
 		CourseOffering co = new CourseOffering(startDate,endDate,course1);
-		co.addSession(new Session(dateFormat.parse("11/01/2020"),timeSlot1));
-		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
+		co.addSession(new Session(dateFormat.parse("11/01/2020"),timeSlot1, co));
+		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1, co));
 		coRepo.save(co);
 		
 		/*Student signing for course*/
