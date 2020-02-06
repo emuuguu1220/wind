@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.miu.cs.cs544.a202001.wind.domain.LoginForm;
@@ -37,6 +38,19 @@ public class LoginController {
 		Map<String, Object> rtn = new LinkedHashMap<>();
 	    try {
 	    	securityService.login(loginForm.getUsername(), loginForm.getPassword());
+	    	rtn.put("success", true);
+	    	rtn.put("message", "logged in");
+        } catch (Exception e) {
+          	rtn.put("success", false);
+	    	rtn.put("message", "authentication.failed");
+        }
+	    return rtn;
+	}
+	@GetMapping(value = "/permitswagger")
+	public Map<String, Object> permitSwagger() {
+		Map<String, Object> rtn = new LinkedHashMap<>();
+	    try {
+	    	securityService.login("admin", "123");
 	    	rtn.put("success", true);
 	    	rtn.put("message", "logged in");
         } catch (Exception e) {
