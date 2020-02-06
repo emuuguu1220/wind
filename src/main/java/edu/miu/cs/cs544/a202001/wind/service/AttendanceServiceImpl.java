@@ -2,13 +2,16 @@ package edu.miu.cs.cs544.a202001.wind.service;
 
 import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
+import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
 import edu.miu.cs.cs544.a202001.wind.repository.IAttendanceRepository;
+import edu.miu.cs.cs544.a202001.wind.repository.ITimeSlotRepository;
 import edu.miu.cs.cs544.a202001.wind.repository.IUserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +20,7 @@ public class AttendanceServiceImpl implements IAttendanceService {
 
     private IAttendanceRepository attendanceRepository;
     private IUserRepository userRepository;
+    private ITimeSlotRepository timeSlotRepository;
 
     public AttendanceServiceImpl(IAttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
@@ -33,7 +37,10 @@ public class AttendanceServiceImpl implements IAttendanceService {
     public void setUserRepository(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    @Autowired
+    public void setTimeSlotRepository(ITimeSlotRepository timeSlotRepository) {
+        this.timeSlotRepository = timeSlotRepository;
+    }
     @Override
     public void addAttendance(Attendance attendance) {
         attendanceRepository.save(attendance);
@@ -65,10 +72,18 @@ public class AttendanceServiceImpl implements IAttendanceService {
     }
 
 	@Override
-	public void recordAttendance(String barcode_id) {
+	public Map<String, Object> recordAttendance(String barcode_id) {
+		Map<String, Object> rtn = new LinkedHashMap<>();
 		Student student = (Student) userRepository.findStudentByBarcode((String) barcode_id);
-		if(student != null) {
-			System.out.println(student.getUserName());
+		if(student == null) {
+			rtn.put("success", false);
+	    	rtn.put("message", "student not found");
+	    	return rtn;
 		}
+		TimeSlot timeSlot = (TimeSlot) timeSlotRepository.findByTime(new Date());
+		if(timeSlot != null) {
+			System.out.println(timeSlot.getAbbrevation());
+		}
+		return rtn;
 	}
 }
