@@ -11,7 +11,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQuery;
 import org.hibernate.annotations.NaturalId;
+
 
 @Entity
 @Table(name="USER")
@@ -19,6 +21,7 @@ import org.hibernate.annotations.NaturalId;
 @DiscriminatorColumn(name="user_type", 
 				     discriminatorType = DiscriminatorType.STRING)
 public class User {
+
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;

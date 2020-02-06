@@ -20,4 +20,8 @@ public interface IAttendanceRepository extends JpaRepository<Attendance, Long> {
             "where a.barcode_id =?1"
     )
     List<Object[]> findByBarcode(String barCode);
+
+    @Query("from Attendance a join a.student st join st.courseOfferings co join co.sessions s where s.id=?1 and co.id=?2")
+    List<Attendance> getAttendanceBySession(Long sessionId,Long courseOfferingId);
+
 }

@@ -66,7 +66,11 @@ public class Application implements CommandLineRunner {
 		/*Independent table*/
 		BCryptPasswordEncoder BCryptPasswordEncoder = new BCryptPasswordEncoder();
 		Student student = new Student("student",BCryptPasswordEncoder.encode("123"),"Munkh-Erdene","Tolya","metolya@miu.edu","610231","123128312370");
+		Student student2 = new Student("student2",BCryptPasswordEncoder.encode("123"),"oussama","Jablaoui","metoleya@miu.edu","610211","123148312370");
+		Student student3 = new Student("student2",BCryptPasswordEncoder.encode("123"),"oussama","Jablaoui","metoleyea@miu.edu","610411","123148112370");
+
 		userRepository.save(student);
+		userRepository.save(student2);
 		userRepository.save(new Admin("admin",BCryptPasswordEncoder.encode("123"),"Admin","Admin","admin@miu.edu"));
 		userRepository.save(new Faculty("faculty",BCryptPasswordEncoder.encode("123"),"Gregory","Guthrie","gguthrie@miu.edu"));
 		
@@ -88,12 +92,14 @@ public class Application implements CommandLineRunner {
 		CourseOffering co = new CourseOffering(startDate,endDate,course1);
 		co.addSession(new Session(dateFormat.parse("11/01/2020"),timeSlot1));
 		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
+		co.addStudent(student);
 		coRepo.save(co);
 		
 		/*Student signing for course*/
 		student.addCourseOffering(co);
 		userRepository.save(student);
 //		Student user = (Student) userRepository.findById((long) 1).orElse(null);
+
     }
 
 }

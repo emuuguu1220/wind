@@ -23,6 +23,8 @@ public class AttendanceController {
         return attendanceService.getAllAttendancesForStudent(barCode);
     }
 
+
+
     @GetMapping(value = "/")
     public List<Attendance> getAllAttendances() {
         return attendanceService.getAllAttendances();
@@ -33,6 +35,11 @@ public class AttendanceController {
         return attendanceService.getAttendanceById(id);
     }
 
+    @GetMapping(value = "/session/{sessionId}/{courseOfferingId}")
+    public List<Attendance> getAttendanceBySession(@PathVariable Long sessionId, @PathVariable Long courseOfferingId)
+    {
+        return attendanceService.getAttendanceBySession(sessionId,courseOfferingId);
+    }
 
     @GetMapping(value = "/record")
     public Map<String, Object> recordAttendance(@RequestParam String barcode,@RequestParam long locationId) {
