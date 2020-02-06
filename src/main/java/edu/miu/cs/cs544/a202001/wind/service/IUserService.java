@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.a202001.wind.service;
 
+import edu.miu.cs.cs544.a202001.wind.domain.CourseOffering;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.User;
 
@@ -14,7 +15,7 @@ public interface IUserService {
     public abstract void deleteUser(User user);
 
     List<Student> getAttendedStudentPerSession(Long sessionId);
-
+    List<CourseOffering> addCourseOfferingToStudent(Long studentId, CourseOffering courseOffering);
     Map<String, Object> getAttendedStudentPerSessionPerCent(Long sessionId);
 
 

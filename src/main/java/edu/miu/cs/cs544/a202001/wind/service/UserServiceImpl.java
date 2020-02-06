@@ -1,11 +1,13 @@
 package edu.miu.cs.cs544.a202001.wind.service;
 
+import edu.miu.cs.cs544.a202001.wind.domain.*;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.User;
 import edu.miu.cs.cs544.a202001.wind.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +69,18 @@ public class UserServiceImpl implements IUserService {
         return result;
 
     }
+//    public Double getAttendedStudentPerSessionPerCent(Long sessionId)
+//    {return userRepository.getAttendedStudentPerSessionPerCent(sessionId);}
+
+    @Override
+    public List<CourseOffering> addCourseOfferingToStudent(Long studentId, CourseOffering courseOffering) {
+        Optional<User> user = userRepository.findById(studentId);
+        Student student = (Student) user.get();
+        student.addCourseOffering(courseOffering);
+        courseOffering.addStudent(student);
+        return student.getCourseOfferings();
+    }
+
 
 
 }
