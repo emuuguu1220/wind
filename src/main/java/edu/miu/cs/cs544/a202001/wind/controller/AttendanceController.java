@@ -40,15 +40,9 @@ public class AttendanceController {
     {
         return attendanceService.getAttendanceBySession(sessionId,courseOfferingId);
     }
-
     @GetMapping(value = "/record")
     public Map<String, Object> recordAttendance(@RequestParam String barcode,@RequestParam long locationId) {
        return attendanceService.recordAttendance(barcode,locationId);
-    }
-
-    @PutMapping(value = "/update")
-    public void updateAttendance(@RequestBody Attendance attendance) {
-        attendanceService.updateAttendance(attendance);
     }
 
     @DeleteMapping(value = "/delete")

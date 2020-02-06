@@ -33,16 +33,23 @@ import edu.miu.cs.cs544.a202001.wind.service.security.SecurityServiceImpl;
 public class LoginController {
 	@Autowired
 	private SecurityService securityService;
-	@GetMapping(value = "/login")
-	public Map<String, Object> login(@ModelAttribute LoginForm loginForm,BindingResult result) {
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public Map<String, Object> login(@ModelAttribute LoginForm loginForm, String logout) {
 		Map<String, Object> rtn = new LinkedHashMap<>();
+		if (logout != null) {
+			rtn.put("success", true);
+	    	rtn.put("message", "You have been logged out successfully.");
+	    	return rtn;
+		}
+		
 	    try {
 	    	securityService.login(loginForm.getUsername(), loginForm.getPassword());
 	    	rtn.put("success", true);
 	    	rtn.put("message", "logged in");
         } catch (Exception e) {
           	rtn.put("success", false);
-	    	rtn.put("message", "authentication.failed");
+	    	rtn.put("message", "authentication failed");
         }
 	    return rtn;
 	}
@@ -60,21 +67,21 @@ public class LoginController {
 	    return rtn;
 	}
 	
-	@GetMapping(value="/logout")
-	public Map<String, Object> logout (HttpServletRequest request, HttpServletResponse response) {
-		Map<String, Object> rtn = new LinkedHashMap<>();
-	    try{
-	    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	        if (auth != null){    
-		        new SecurityContextLogoutHandler().logout(request, response, auth);
-		    }
-			rtn.put("success", true);
-	    	rtn.put("message", "logout successfully");
-	    }catch(Exception e) {
-	    	rtn.put("success", false);
-	    	rtn.put("message", "failed");
-	    }
-	    return rtn;
-	}
+//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+//	public Map<String, Object> logout (HttpServletRequest request, HttpServletResponse response) {
+//		Map<String, Object> rtn = new LinkedHashMap<>();
+//	    try{
+//	    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//	        if (auth != null){    
+//		        new SecurityContextLogoutHandler().logout(request, response, auth);
+//		    }
+//			rtn.put("success", true);
+//	    	rtn.put("message", "logout successfully");
+//	    }catch(Exception e) {
+//	    	rtn.put("success", false);
+//	    	rtn.put("message", "failed");
+//	    }
+//	    return rtn;
+//	}
 
 }

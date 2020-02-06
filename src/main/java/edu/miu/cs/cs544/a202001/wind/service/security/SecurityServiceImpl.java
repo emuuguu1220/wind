@@ -32,7 +32,6 @@ public class SecurityServiceImpl implements SecurityService {
 
 	@Override
 	public void login(String username, String password) {
-	    System.out.println("autologin:" + password);
 	    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 	    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken 
 	    = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface IAttendanceRepository extends JpaRepository<Attendance, Long> {
-    @Query("select distinct c.name, a, 'Attended' " +
+    @Query("select distinct c.name, a.date, 'Attended' " +
             "from Attendance a " +
             "join a.student st " +
             "join st.courseOfferings co " +
