@@ -11,6 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NaturalId;
+
 @Entity
 @Table(name="USER")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -32,6 +34,7 @@ public class User {
 	@Column(name="LAST_NAME")
 	private String lastName;
 	
+	@Column(unique = true)
 	private String email;
 	
 	public User() {}

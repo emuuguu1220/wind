@@ -51,6 +51,7 @@ public class AttendanceServiceImpl implements IAttendanceService {
 
     @Override
     public List<Attendance> getAllAttendancesForStudent(String barCode) {
-        return attendanceRepository.findByBarcode(barCode);
+//        return attendanceRepository.findByBarcode(barCode);
+        return null;
     }
 }
