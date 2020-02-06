@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="SESSION")
 public class Session {
@@ -21,6 +23,7 @@ public class Session {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="COURSE_OFFER_ID",nullable=false)
 	private CourseOffering courseOffering;
@@ -30,10 +33,9 @@ public class Session {
 	private TimeSlot timeSlot;
 	
 	public Session() {}
-	public Session(Date date,TimeSlot timeSlot, CourseOffering courseOffering) {
+	public Session(Date date,TimeSlot timeSlot) {
 		this.date = date;
 		this.timeSlot = timeSlot;
-		this.courseOffering = courseOffering;
 	}
 
 	public long getId() {

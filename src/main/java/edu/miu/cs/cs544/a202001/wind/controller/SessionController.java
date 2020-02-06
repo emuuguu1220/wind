@@ -4,7 +4,10 @@ import edu.miu.cs.cs544.a202001.wind.service.ISessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/sessions")
@@ -24,7 +27,7 @@ public class SessionController {
 
 
     @PostMapping(value = "/add")
-    public void addSession(@RequestBody Session session) {
+    public void addSession(@RequestBody Session session){
         sessionService.addSession(session);
     }
 

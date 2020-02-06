@@ -2,6 +2,8 @@ package edu.miu.cs.cs544.a202001.wind.domain;
 
 import org.hibernate.validator.constraints.Length;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -34,6 +36,7 @@ public class TimeSlot {
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
+	
 	public String getAbbrevation() {
 		return abbrevation;
 	}
