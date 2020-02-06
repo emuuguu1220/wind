@@ -100,6 +100,10 @@ public class AttendanceServiceImpl implements IAttendanceService {
     public List<Object[]> getAllAttendancesForStudent(String barCode) {
         return attendanceRepository.findByBarcode(barCode);
     }
-
+    @Override
+    public List<Attendance> getAttendanceBySession(Long sessionId, Long courseOfferingId)
+    {
+        return attendanceRepository.getAttendanceBySession(sessionId,courseOfferingId);
+    }
 
 }

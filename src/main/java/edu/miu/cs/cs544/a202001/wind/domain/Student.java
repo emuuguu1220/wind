@@ -10,6 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.NamedQuery;
 import org.hibernate.annotations.NaturalId;
 
 import java.util.ArrayList;
