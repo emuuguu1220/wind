@@ -19,11 +19,14 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Query("SELECT t FROM Student t where t.barcode = :barcode_id")
     Student findStudentByBarcode(String barcode_id);
 
-    @Query("select distinct st.firstName,st.lastName from Session s join s.courseOffering co join co.students st join st.attendances at where s.id = :sessionId")
-    List<Object> getAttendedStudentPerSession(Long sessionId);
+    @Query("select distinct st from Session s join s.courseOffering co join co.students st join st.attendances at where s.id = :sessionId")
+    List<Student> getAttendedStudentPerSession(Long sessionId);
 
-    @Query("select distinct count(st) from Session s join s.courseOffering co join co.students st where s.id=?1  ")
-    Double getAttendedStudentPerSessionPerCent(Long sessionId);
+    @Query("select st from Student st")
+    List<Student> getAllStudent();
+
+    @Query("select st from Student st join st.courseOfferings co join co.sessions s where s.id=?1")
+    List<Student> getAllStudentPerSession(Long sessionId);
 
 
 

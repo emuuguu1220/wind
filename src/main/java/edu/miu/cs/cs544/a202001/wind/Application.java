@@ -42,13 +42,13 @@ public class Application implements CommandLineRunner {
 //	ICourseOfferingRepository coRepo;
 //	@Autowired
 //	ISessionRepository sessionRepo;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 	@Override
-    public void run(String... args) throws Exception 
-    {   
+	public void run(String... args) throws Exception
+	{
 //		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 //		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 //
@@ -94,6 +94,6 @@ public class Application implements CommandLineRunner {
 //		student.addCourseOffering(co);
 //		userRepository.save(student);
 ////		Student user = (Student) userRepository.findById((long) 1).orElse(null);
-    }
+	}
 
 }

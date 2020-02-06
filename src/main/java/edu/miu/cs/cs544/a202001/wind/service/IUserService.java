@@ -14,9 +14,7 @@ public interface IUserService {
     public abstract void updateUser(User user);
     public abstract void deleteUser(User user);
 
-    List<Object> getAttendedStudentPerSession(Long sessionId);
-
-    Double getAttendedStudentPerSessionPerCent(Long sessionId);
-
+    List<Student> getAttendedStudentPerSession(Long sessionId);
     List<CourseOffering> addCourseOfferingToStudent(Long studentId, CourseOffering courseOffering);
+    Map<Double,List<Student>> getAttendedStudentPerSessionPerCent(Long sessionId);
 }

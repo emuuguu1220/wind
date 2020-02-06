@@ -14,5 +14,5 @@ public interface IAttendanceService {
     public abstract void updateAttendance(Attendance attendance);
     public abstract void deleteAttendance(Attendance attendance);
     List<Object[]> getAllAttendancesForStudent(String barCode);
-    List<Attendance> getAttendanceBySession(Long sessionId,Long courseOfferingId);
+    List<Attendance> getAttendanceByStudentByCourseOff(Long sessionId,Long courseOfferingId);
 }
