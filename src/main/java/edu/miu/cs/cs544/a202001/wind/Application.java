@@ -18,7 +18,10 @@ import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy(proxyTargetClass = true)
@@ -37,6 +40,7 @@ public class Application implements CommandLineRunner {
 	ICourseOfferingRepository coRepo;
 	@Autowired
 	ISessionRepository sessionRepo;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -59,10 +63,11 @@ public class Application implements CommandLineRunner {
 		locationRepository.save(new Location("Dalby Hall"));
 		
 		/*Independent table*/
-		Student student = new Student("student","pass","Munkh-Erdene","Tolya","metolya@miu.edu","610231","123128312370");
+		BCryptPasswordEncoder BCryptPasswordEncoder = new BCryptPasswordEncoder();
+		Student student = new Student("student",BCryptPasswordEncoder.encode("123"),"Munkh-Erdene","Tolya","metolya@miu.edu","610231","123128312370");
 		userRepository.save(student);
-		userRepository.save(new Admin("admin","pass","Adminname","Adminpass","admin@miu.edu"));
-		userRepository.save(new Faculty("faculty","pass","Gregory","Guthrie","gguthrie@miu.edu"));
+		userRepository.save(new Admin("admin",BCryptPasswordEncoder.encode("123"),"Admin","Admin","admin@miu.edu"));
+		userRepository.save(new Faculty("faculty",BCryptPasswordEncoder.encode("123"),"Gregory","Guthrie","gguthrie@miu.edu"));
 		
 		/*Independent table*/
 		TimeSlot timeSlot1 = new TimeSlot("AM","before midday",timeFormat.parse("08:30:00"),timeFormat.parse("09:00:00"));
