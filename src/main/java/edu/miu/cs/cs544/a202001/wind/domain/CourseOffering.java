@@ -1,5 +1,7 @@
 package edu.miu.cs.cs544.a202001.wind.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,7 +44,7 @@ public class CourseOffering {
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="courseOffering",fetch=FetchType.EAGER)
 	private List<Session> sessions = new ArrayList<Session>();
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="courseOfferings")
 	List<Student> students = new ArrayList<Student>();
 	
