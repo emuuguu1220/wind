@@ -34,11 +34,6 @@ public class AttendanceController {
     }
 
 
-    @PostMapping(value = "/add")
-    public void addAttendance(@RequestBody Attendance attendance, HttpServletResponse response) throws IOException {
-        attendanceService.addAttendance(attendance);
-        response.sendRedirect("/attendances/");
-    }
     @GetMapping(value = "/record")
     public Map<String, Object> recordAttendance(@RequestParam String barcode,@RequestParam long locationId) {
        return attendanceService.recordAttendance(barcode,locationId);
