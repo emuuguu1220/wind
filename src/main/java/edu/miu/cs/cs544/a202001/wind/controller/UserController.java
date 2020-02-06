@@ -30,12 +30,12 @@ public class UserController {
     }
 
     @GetMapping(value = "/student/session/{sessionId}")
-    public List<Object> getAttendedStudentPerSession(@PathVariable Long sessionId) {
+    public List<Student> getAttendedStudentPerSession(@PathVariable Long sessionId) {
         return userService.getAttendedStudentPerSession(sessionId);
     }
 
     @GetMapping(value = "/student/session/{sessionId}/percent")
-    public Double getAttendedStudentPerSessionPerCent(Long sessionId) {
+    public Map<Double, List<Student>> getAttendedStudentPerSessionPerCent(@PathVariable Long sessionId) {
         return userService.getAttendedStudentPerSessionPerCent(sessionId);
     }
 

@@ -1,6 +1,5 @@
 package edu.miu.cs.cs544.a202001.wind.service;
 
-import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.User;
 import edu.miu.cs.cs544.a202001.wind.repository.IUserRepository;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -55,13 +53,17 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<Object> getAttendedStudentPerSession(Long sessionId)
-    {
-      return userRepository.getAttendedStudentPerSession(sessionId);
+    public List<Student> getAttendedStudentPerSession(Long sessionId) {
+        return userRepository.getAttendedStudentPerSession(sessionId);
     }
-    @Override
-    public Double getAttendedStudentPerSessionPerCent(Long sessionId)
-    {return userRepository.getAttendedStudentPerSessionPerCent(sessionId);}
 
+    @Override
+    public Map<Double, List<Student>> getAttendedStudentPerSessionPerCent(Long sessionId) {
+        Map<Double, List<Student>> result = new HashMap<>();
+        Double attendancePercentPerSession = Double.valueOf(
+                userRepository.getAttendedStudentPerSession(sessionId).size() * 100 / userRepository.getAllStudentPerSession(sessionId).size());
+        result.put(attendancePercentPerSession, userRepository.getAttendedStudentPerSession(sessionId));
+        return result;
+    }
 
 }
