@@ -101,9 +101,9 @@ public class AttendanceServiceImpl implements IAttendanceService {
         return attendanceRepository.findByBarcode(barCode);
     }
     @Override
-    public List<Attendance> getAttendanceBySession(Long sessionId, Long courseOfferingId)
+    public List<Attendance> getAttendanceByStudentByCourseOff(Long studentId, Long courseOfferingId)
     {
-        return attendanceRepository.getAttendanceBySession(sessionId,courseOfferingId);
+        return attendanceRepository.getAttendanceByStudentByCourseOff(studentId,courseOfferingId);
     }
 
 }

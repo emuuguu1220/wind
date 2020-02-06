@@ -89,15 +89,20 @@ public class Application implements CommandLineRunner {
 		Date startDate = dateFormat.parse("11/01/2020");
 		Date endDate = dateFormat.parse("07/02/2020");
 		/*Relation tables*/
+		Session session1= new Session(dateFormat.parse("11/01/2020"),timeSlot1);
 		CourseOffering co = new CourseOffering(startDate,endDate,course1);
-		co.addSession(new Session(dateFormat.parse("11/01/2020"),timeSlot1));
+		co.addSession(session1 );
+		session1.setCourseOffering(co);
 		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
 		co.addStudent(student);
+		co.addStudent(student2);
 		coRepo.save(co);
-		
+		sessionRepo.save(session1);
 		/*Student signing for course*/
 		student.addCourseOffering(co);
+		student2.addCourseOffering(co);
 		userRepository.save(student);
+		userRepository.save(student2);
 //		Student user = (Student) userRepository.findById((long) 1).orElse(null);
 
     }

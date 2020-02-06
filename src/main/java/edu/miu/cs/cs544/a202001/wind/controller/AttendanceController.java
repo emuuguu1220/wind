@@ -35,10 +35,10 @@ public class AttendanceController {
         return attendanceService.getAttendanceById(id);
     }
 
-    @GetMapping(value = "/session/{sessionId}/{courseOfferingId}")
-    public List<Attendance> getAttendanceBySession(@PathVariable Long sessionId, @PathVariable Long courseOfferingId)
+    @GetMapping(value = "/student/{studentId}/{courseOfferingId}")
+    public List<Attendance> getAttendanceByStudentByCourseOff(@PathVariable Long studentId, @PathVariable Long courseOfferingId)
     {
-        return attendanceService.getAttendanceBySession(sessionId,courseOfferingId);
+        return attendanceService.getAttendanceByStudentByCourseOff(studentId,courseOfferingId);
     }
     @GetMapping(value = "/record")
     public Map<String, Object> recordAttendance(@RequestParam String barcode,@RequestParam long locationId) {
