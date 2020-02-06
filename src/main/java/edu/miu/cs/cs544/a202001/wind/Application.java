@@ -42,7 +42,6 @@ public class Application implements CommandLineRunner {
 	ICourseOfferingRepository coRepo;
 	@Autowired
 	ISessionRepository sessionRepo;
-
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
