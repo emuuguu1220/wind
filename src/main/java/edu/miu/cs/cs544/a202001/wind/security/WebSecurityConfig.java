@@ -47,12 +47,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    http.csrf().disable() 
 	            	.authorizeRequests()
 	                .antMatchers("/resources/**", "/login", "/permitswagger").permitAll() 
-//	                .antMatchers("/v2/api-docs",
-//                            "/configuration/ui",
-//                            "/swagger-resources/**",
-//                            "/configuration/security",
-//                            "/swagger-ui.html",
-//                            "/webjars/**").permitAll()
+	                .antMatchers("/v2/api-docs",
+                            "/configuration/ui",
+                            "/swagger-resources/**",
+                            "/configuration/security",
+                            "/swagger-ui.html",
+                            "/webjars/**").permitAll()
 	                .antMatchers("/courses/").hasAnyRole("ADMIN","FACULTY")	
 	                .antMatchers("/courses/**").hasRole("ADMIN")
 	                .antMatchers("/session/").hasAnyRole("ADMIN","FACULTY")	
