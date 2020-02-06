@@ -18,8 +18,11 @@ import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @EnableSwagger2
@@ -82,8 +85,8 @@ public class Application implements CommandLineRunner {
 		Date endDate = dateFormat.parse("07/02/2020");
 		/*Relation tables*/
 		CourseOffering co = new CourseOffering(startDate,endDate,course1);
-		co.addSession(new Session(dateFormat.parse("11/01/2020"),timeSlot1, co));
-		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1, co));
+		co.addSession(new Session(dateFormat.parse("11/01/2020"),timeSlot1));
+		co.addSession(new Session(dateFormat.parse("12/01/2020"),timeSlot1));
 		coRepo.save(co);
 		
 		/*Student signing for course*/

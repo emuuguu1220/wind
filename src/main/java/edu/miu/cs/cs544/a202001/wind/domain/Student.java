@@ -18,9 +18,9 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("student")
 public class Student extends User{
-	
-    @Column(name="STUDENT_ID")
+
 	@Pattern(regexp = "\\d+", message = "Invalid Student ID")
+    @Column(name="STUDENT_ID", unique = true)
 	private String studentId;
 
 	@Pattern(regexp = "\\d+", message = "Invalid Barcode Number")
@@ -44,12 +44,10 @@ public class Student extends User{
 		this.barcode = barcode;
 	}
 	public void addCourseOffering(CourseOffering co) {
-		courseOfferings.add(co);
-		co.addStudent(this);
+		this.courseOfferings.add(co);
 	}
 	public void removeCourseOffering(CourseOffering co) {
-		courseOfferings.remove(co);
-		co.removeStudent(this);
+		this.courseOfferings.remove(co);
 	}
 	public void addAttendance(Attendance attendance) {
 		attendances.add(attendance);

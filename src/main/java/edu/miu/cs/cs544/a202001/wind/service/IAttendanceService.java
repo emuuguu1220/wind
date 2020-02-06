@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IAttendanceService {
     public abstract void addAttendance(Attendance attendance);
+    public abstract Map<String, Object> recordAttendance(String barcode_id);
     public abstract Attendance getAttendanceById(Long id);
     public abstract List<Attendance> getAllAttendances();
     public abstract void updateAttendance(Attendance attendance);
