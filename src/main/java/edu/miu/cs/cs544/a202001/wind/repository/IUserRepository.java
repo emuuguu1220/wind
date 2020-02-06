@@ -8,5 +8,5 @@ import edu.miu.cs.cs544.a202001.wind.domain.User;
  
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long> {
-	
+	User findByUsername(String username);
 }
