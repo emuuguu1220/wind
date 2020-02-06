@@ -1,4 +1,5 @@
 package edu.miu.cs.cs544.a202001.wind.controller;
+
 import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
 import edu.miu.cs.cs544.a202001.wind.domain.User;
 import edu.miu.cs.cs544.a202001.wind.service.IAttendanceService;
@@ -15,10 +16,11 @@ public class AttendanceController {
 
     private IAttendanceService attendanceService;
 
-    @GetMapping(value = "/bybarCode/{barCode}")
-    public  List<Object[]> getUserAttendances(@PathVariable String barCode) {
+    @GetMapping(value = "/AttendedbyBarCode/{barCode}")
+    public List<Object[]> getUserAttendances(@PathVariable String barCode) {
         return attendanceService.getAllAttendancesForStudent(barCode);
     }
+
     @GetMapping(value = "/")
     public List<Attendance> getAllAttendances() {
         return attendanceService.getAllAttendances();
@@ -56,6 +58,7 @@ public class AttendanceController {
     public IAttendanceService getAttendanceService() {
         return attendanceService;
     }
+
     @Autowired
     public void setAttendanceService(IAttendanceService attendanceService) {
         this.attendanceService = attendanceService;

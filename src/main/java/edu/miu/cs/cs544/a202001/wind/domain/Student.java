@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.NaturalId;
 
@@ -17,11 +18,13 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("student")
 public class Student extends User{
-	
+
+	@Pattern(regexp = "\\d+", message = "Invalid Student ID")
     @Column(name="STUDENT_ID", unique = true)
 	private String studentId;
-    
-    @Column(name = "BARCODE_ID", unique = true)
+
+	@Pattern(regexp = "\\d+", message = "Invalid Barcode Number")
+	@Column(name = "BARCODE_ID", unique = true)
 	private String barcode;
 	
 	@OneToMany(mappedBy="student",fetch=FetchType.EAGER)
@@ -48,9 +51,12 @@ public class Student extends User{
 	}
 	public void addAttendance(Attendance attendance) {
 		attendances.add(attendance);
+		attendance.setStudent(this);
 	}
+
 	public void removeAttendance(Attendance attendance) {
 		attendances.remove(attendance);
+		attendance.setStudent(null);
 	}
 	public String getStudentId() {
 		return studentId;
@@ -67,13 +73,7 @@ public class Student extends User{
 	public List<Attendance> getAttendances() {
 		return attendances;
 	}
-	public void setAttendances(List<Attendance> attendances) {
-		this.attendances = attendances;
-	}
 	public List<CourseOffering> getCourseOfferings() {
 		return courseOfferings;
-	}
-	public void setCourseOfferings(List<CourseOffering> courseOfferings) {
-		this.courseOfferings = courseOfferings;
 	}
 }

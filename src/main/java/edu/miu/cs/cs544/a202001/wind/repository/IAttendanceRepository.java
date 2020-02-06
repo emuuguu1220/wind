@@ -1,5 +1,6 @@
 package edu.miu.cs.cs544.a202001.wind.repository;
 
+import edu.miu.cs.cs544.a202001.wind.domain.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface IAttendanceRepository extends JpaRepository<Attendance, Long> {
-    @Query("select distinct a.date, c.name " +
+    @Query("select distinct c.name, a, 'Attended' " +
             "from Attendance a " +
             "join a.student st " +
             "join st.courseOfferings co " +

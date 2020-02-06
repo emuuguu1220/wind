@@ -30,9 +30,14 @@ public class Session {
 	private TimeSlot timeSlot;
 	
 	public Session() {}
-	public Session(Date date,TimeSlot timeSlot) {
+	public Session(Date date,TimeSlot timeSlot, CourseOffering courseOffering) {
 		this.date = date;
 		this.timeSlot = timeSlot;
+		this.courseOffering = courseOffering;
+	}
+
+	public long getId() {
+		return id;
 	}
 	public Date getDate() {
 		return date;

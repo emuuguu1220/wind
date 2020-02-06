@@ -21,9 +21,11 @@ import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
+@EnableSwagger2
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application implements CommandLineRunner {
 	@Autowired

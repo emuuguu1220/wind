@@ -1,5 +1,7 @@
 package edu.miu.cs.cs544.a202001.wind.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.TemporalType;
 @Table(name="TIMESLOT")
 public class TimeSlot {
 	@Id
+	@Length(max = 3)
 	private String abbrevation;
 	
 	@Lob
