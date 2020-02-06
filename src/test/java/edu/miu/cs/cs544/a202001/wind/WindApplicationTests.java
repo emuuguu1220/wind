@@ -3,22 +3,22 @@ package edu.miu.cs.cs544.a202001.wind;
 import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.service.ILocationService;
 import edu.miu.cs.cs544.a202001.wind.service.LocationServiceImpl;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
-
-
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
+//import org.junit.jupiter.api.Test;
+//import org.junit.runner.RunWith;
+//import org.mockito.InjectMocks;
+//import org.mockito.Mock;
+//import org.mockito.junit.MockitoJUnitRunner;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.mockito.Mockito.when;
+//
+//
+//@SpringBootTest
+//@RunWith(MockitoJUnitRunner.class)
 class WindApplicationTests {
 
 //    @Mock
