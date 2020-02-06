@@ -1,7 +1,10 @@
 package edu.miu.cs.cs544.a202001.wind.service;
 
 import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
+import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.repository.IAttendanceRepository;
+import edu.miu.cs.cs544.a202001.wind.repository.IUserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import java.util.Map;
 public class AttendanceServiceImpl implements IAttendanceService {
 
     private IAttendanceRepository attendanceRepository;
+    private IUserRepository userRepository;
 
     public AttendanceServiceImpl(IAttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
@@ -24,6 +28,10 @@ public class AttendanceServiceImpl implements IAttendanceService {
     @Autowired
     public void setAttendanceRepository(IAttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
+    }
+    @Autowired
+    public void setUserRepository(IUserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -55,4 +63,12 @@ public class AttendanceServiceImpl implements IAttendanceService {
     public List<Object[]> getAllAttendancesForStudent(String barCode) {
         return attendanceRepository.findByBarcode(barCode);
     }
+
+	@Override
+	public void recordAttendance(String barcode_id) {
+		Student student = (Student) userRepository.findStudentByBarcode((String) barcode_id);
+		if(student != null) {
+			System.out.println(student.getUserName());
+		}
+	}
 }

@@ -18,7 +18,7 @@ import java.util.List;
 @DiscriminatorValue("student")
 public class Student extends User{
 	
-    @Column(name="STUDENT_ID")
+    @Column(name="STUDENT_ID", unique = true)
 	private String studentId;
     
     @Column(name = "BARCODE_ID", unique = true)

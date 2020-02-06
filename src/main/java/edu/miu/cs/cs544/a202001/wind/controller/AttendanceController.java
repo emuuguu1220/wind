@@ -34,6 +34,10 @@ public class AttendanceController {
     public void addAttendance(@RequestBody Attendance attendance) {
         attendanceService.addAttendance(attendance);
     }
+    @GetMapping(value = "/record/{barcode_id}")
+    public void recordAttendance(@PathVariable String barcode_id) {
+        attendanceService.recordAttendance(barcode_id);
+    }
 
     @PutMapping(value = "/update")
     public void updateAttendance(@RequestBody Attendance attendance) {
