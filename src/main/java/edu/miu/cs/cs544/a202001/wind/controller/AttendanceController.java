@@ -34,9 +34,9 @@ public class AttendanceController {
     public void addAttendance(@RequestBody Attendance attendance) {
         attendanceService.addAttendance(attendance);
     }
-    @GetMapping(value = "/record/{barcode_id}")
-    public Map<String, Object> recordAttendance(@PathVariable String barcode_id) {
-       return attendanceService.recordAttendance(barcode_id);
+    @GetMapping(value = "/record")
+    public Map<String, Object> recordAttendance(@RequestParam String barcode,@RequestParam long locationId) {
+       return attendanceService.recordAttendance(barcode,locationId);
     }
 
     @PutMapping(value = "/update")

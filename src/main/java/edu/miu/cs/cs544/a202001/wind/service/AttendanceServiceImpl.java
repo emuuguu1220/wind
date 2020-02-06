@@ -1,9 +1,11 @@
 package edu.miu.cs.cs544.a202001.wind.service;
 
 import edu.miu.cs.cs544.a202001.wind.domain.Attendance;
+import edu.miu.cs.cs544.a202001.wind.domain.Location;
 import edu.miu.cs.cs544.a202001.wind.domain.Student;
 import edu.miu.cs.cs544.a202001.wind.domain.TimeSlot;
 import edu.miu.cs.cs544.a202001.wind.repository.IAttendanceRepository;
+import edu.miu.cs.cs544.a202001.wind.repository.ILocationRepository;
 import edu.miu.cs.cs544.a202001.wind.repository.ITimeSlotRepository;
 import edu.miu.cs.cs544.a202001.wind.repository.IUserRepository;
 
@@ -21,14 +23,38 @@ public class AttendanceServiceImpl implements IAttendanceService {
     private IAttendanceRepository attendanceRepository;
     private IUserRepository userRepository;
     private ITimeSlotRepository timeSlotRepository;
-
+    private ILocationRepository locationRepository;
+    
+	@Override
+	public Map<String, Object> recordAttendance(String barcode_id,long locationId) {
+		Map<String, Object> rtn = new LinkedHashMap<>();
+		Student student = (Student) userRepository.findStudentByBarcode((String) barcode_id);
+		if(student == null) {
+			rtn.put("success", false);
+	    	rtn.put("message", "student not found!");
+	    	return rtn;
+		}
+		TimeSlot timeSlot = (TimeSlot) timeSlotRepository.findByTime(new Date());
+		if(timeSlot == null) {
+			rtn.put("success", false);
+	    	rtn.put("message", "time slot not found!");
+		}
+		Location location = locationRepository.getOne(locationId);
+		Attendance att = new Attendance(new Date(),student,timeSlot,location);
+		attendanceRepository.save(att);
+		
+		rtn.put("success", true);
+    	rtn.put("message", "attendance recorded");
+		return rtn;
+	}
+	
     public AttendanceServiceImpl(IAttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
     }
 
     public AttendanceServiceImpl() {
     }
-
+    
     @Autowired
     public void setAttendanceRepository(IAttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
@@ -40,6 +66,10 @@ public class AttendanceServiceImpl implements IAttendanceService {
     @Autowired
     public void setTimeSlotRepository(ITimeSlotRepository timeSlotRepository) {
         this.timeSlotRepository = timeSlotRepository;
+    }
+    @Autowired
+    public void setLocationRepo(ILocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
     }
     @Override
     public void addAttendance(Attendance attendance) {
@@ -71,19 +101,5 @@ public class AttendanceServiceImpl implements IAttendanceService {
         return attendanceRepository.findByBarcode(barCode);
     }
 
-	@Override
-	public Map<String, Object> recordAttendance(String barcode_id) {
-		Map<String, Object> rtn = new LinkedHashMap<>();
-		Student student = (Student) userRepository.findStudentByBarcode((String) barcode_id);
-		if(student == null) {
-			rtn.put("success", false);
-	    	rtn.put("message", "student not found");
-	    	return rtn;
-		}
-		TimeSlot timeSlot = (TimeSlot) timeSlotRepository.findByTime(new Date());
-		if(timeSlot != null) {
-			System.out.println(timeSlot.getAbbrevation());
-		}
-		return rtn;
-	}
+
 }

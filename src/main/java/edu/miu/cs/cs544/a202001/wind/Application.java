@@ -70,8 +70,8 @@ public class Application implements CommandLineRunner {
 		userRepository.save(new Faculty("faculty",BCryptPasswordEncoder.encode("123"),"Gregory","Guthrie","gguthrie@miu.edu"));
 		
 		/*Independent table*/
-		TimeSlot timeSlot1 = new TimeSlot("AM","before midday",timeFormat.parse("00:30:00"),timeFormat.parse("16:00:00"));
-		TimeSlot timeSlot2 = new TimeSlot("PM","after midday",timeFormat.parse("17:30:00"),timeFormat.parse("18:30:00"));
+		TimeSlot timeSlot1 = new TimeSlot("AM","before midday",timeFormat.parse("00:00:00"),timeFormat.parse("12:00:00"));
+		TimeSlot timeSlot2 = new TimeSlot("PM","after midday",timeFormat.parse("12:00:01"),timeFormat.parse("23:59:59"));
 		tsRepository.save(timeSlot1);
 		tsRepository.save(timeSlot2);
 		
