@@ -34,11 +34,11 @@ public class UserController {
         return userService.getAttendedStudentPerSession(sessionId);
     }
 
+
     @GetMapping(value = "/student/session/{sessionId}/percent")
-    public Map<Double, List<Student>> getAttendedStudentPerSessionPerCent(@PathVariable Long sessionId) {
+    public Map<String, Object> getAttendedStudentPerSessionPerCent(@PathVariable Long sessionId) {
         return userService.getAttendedStudentPerSessionPerCent(sessionId);
     }
-
     @PostMapping(value = "/add")
     public void addUser(@RequestBody User user, HttpServletResponse response) throws IOException {
         userService.addUser(user);

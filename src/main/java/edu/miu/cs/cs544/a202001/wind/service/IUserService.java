@@ -15,5 +15,7 @@ public interface IUserService {
 
     List<Student> getAttendedStudentPerSession(Long sessionId);
 
-    Map<Double,List<Student>> getAttendedStudentPerSessionPerCent(Long sessionId);
+    Map<String, Object> getAttendedStudentPerSessionPerCent(Long sessionId);
+
+
 }

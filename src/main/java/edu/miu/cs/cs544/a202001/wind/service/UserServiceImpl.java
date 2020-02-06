@@ -58,12 +58,15 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Map<Double, List<Student>> getAttendedStudentPerSessionPerCent(Long sessionId) {
-        Map<Double, List<Student>> result = new HashMap<>();
+    public Map<String, Object> getAttendedStudentPerSessionPerCent(Long sessionId) {
+        Map<String, Object> result = new HashMap<>();
         Double attendancePercentPerSession = Double.valueOf(
                 userRepository.getAttendedStudentPerSession(sessionId).size() * 100 / userRepository.getAllStudentPerSession(sessionId).size());
-        result.put(attendancePercentPerSession, userRepository.getAttendedStudentPerSession(sessionId));
+        result.put("Percentage", attendancePercentPerSession);
+        result.put("StudentList", userRepository.getAttendedStudentPerSession(sessionId));
         return result;
+
     }
+
 
 }
