@@ -66,22 +66,4 @@ public class LoginController {
         }
 	    return rtn;
 	}
-	
-//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-//	public Map<String, Object> logout (HttpServletRequest request, HttpServletResponse response) {
-//		Map<String, Object> rtn = new LinkedHashMap<>();
-//	    try{
-//	    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//	        if (auth != null){    
-//		        new SecurityContextLogoutHandler().logout(request, response, auth);
-//		    }
-//			rtn.put("success", true);
-//	    	rtn.put("message", "logout successfully");
-//	    }catch(Exception e) {
-//	    	rtn.put("success", false);
-//	    	rtn.put("message", "failed");
-//	    }
-//	    return rtn;
-//	}
-
 }
